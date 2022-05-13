@@ -63,6 +63,8 @@ p3 <- ggplot(days_since, aes(x=hum , y = results$hum)) + geom_line() + geom_rug(
   ylim(0, 6000) + labs(x="Humidity", y=NULL)
 p4 <- ggplot(data = days_since, aes(x=windspeed, y=results$windspeed)) + geom_line() + ylim(0, 6000) +
   geom_rug(alpha=0.1, sides="b") + labs(x="Wind speed", y=NULL)
+ 
+subplot(p1,p2,p3,p4, shareY = T, titleY=T, titleX=T)
 ```
 Para el caso de Días desde 2011, se observa cierta correlación positiva entre la predicción de las bicicletas alquiladas y los días a partir del 2011. Por lo que, en general, cuantos más días pasan más aumenta el número de bicicletas alquiladas. Aunque, no se observa una fuerte correlación positiva ya que en algunos momentos decrece ligeramente el número de bicicletas alquiladas.  Mirando la gráfica, vemos que al principio aumenta, se observa un pequeño parón, vuelve a aumentar y por último un ligero decrecimiento.
 
