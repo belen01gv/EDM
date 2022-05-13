@@ -70,7 +70,7 @@ Para el caso de Días desde 2011, se observa cierta correlación positiva entre 
 
 Para la temperatura, se observa también una correlación positiva para la variable temperatura y la predicción de las bicicletas alquiladas. En general, para mayores temperaturas el número de bicicletas alquiladas es mayor. Excepto para las temperaturas superiores a 23 º, esto parece lógico ya que cuando hace demasiado calor las personas no tienen tantas ganas de ir en bicicleta.
 
-En el caso de la velocidad del vient, si es menor de 25 no se puede afirmar nada ya que no hay suficientes muestras. En el resto vemos una correlación positiva entre las dos variables.
+En el caso de la velocidad del viento, si es mayor de 25 no se puede afirmar nada ya que no hay suficientes muestras. En el resto vemos una correlación positiva entre las dos variables.
 
 Por último, respecto a la humedad no podemos afirmar nada para valores inferiores a 50 debido a las pocas muestras. En el resto, observamos una relación negativa prácticamente lineal, ya que cuando aumenta una de las variables, la otra disminuye.
 
