@@ -54,7 +54,6 @@ for(c in names(results)[1:4])
 }
 ```
 
-
 ## EXERCISE:
 
 Generate a 2D Partial Dependency Plot with humidity and temperature to predict the number of bikes rented depending of those parameters.
@@ -68,6 +67,7 @@ TIP: Use geom_tile() to generate the 2D plot. Set width and height to avoid hole
 ## QUESTION:
 
 Interpret the results.
+
 
 ```{r}
 
@@ -85,7 +85,10 @@ for(i in 1:nrow(th)){
   sal <- predict(rf, r)$predicted
   th[["p"]][i] <- sum(sal) / nr
 }
+
+ggplot(th, mapping=aes(temp, hum)) + geom_tile(mapping=aes(fill= p, width =20, height=20)) + geom_rug()+xlab("Temperature") + ylab("Humidity") + labs(fill = "Number of bikes")
 ```
+En el gráfico 2D, podemos ver que, para una temperatura fija, ante un aumento de la humedad es más probable que los clientes no alquilen bicicles. En cambio, si ahora fijamos un valor para la humedad, ante un aumento de temperatura, en general aumenta la probabilidad de alquilar una bicicleta. Excepto a partir de temperaturas mayores de 25, para las cuales a mayor temperatura menos probable es alquilar una bicicleta. Aunque es mucho menos probable que se alquile con temperaturas menores a 10 grados.
 
 
 ## EXERCISE:
