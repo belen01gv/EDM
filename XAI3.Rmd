@@ -54,6 +54,24 @@ for(c in names(results)[1:4])
 }
 ```
 
+```{r}
+p1 <- ggplot(data = days_since, aes(x=days_since_2011, y=results$days_since_2011)) + geom_line() +
+  ylim(0, 6000) + geom_rug(alpha=0.1, sides="b")+ labs(x="Days since 2011", y="Prediction")
+p2 <- ggplot(data = days_since, aes(x=temp, y=results$temp)) + geom_line() + ylim(0, 6000) +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Temperature", y=NULL)
+p3 <- ggplot(days_since, aes(x=hum , y = results$hum)) + geom_line() + geom_rug(alpha=0.1, sides="b") + 
+  ylim(0, 6000) + labs(x="Humidity", y=NULL)
+p4 <- ggplot(data = days_since, aes(x=windspeed, y=results$windspeed)) + geom_line() + ylim(0, 6000) +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Wind speed", y=NULL)
+```
+Para el caso de Días desde 2011, se observa cierta correlación positiva entre la predicción de las bicicletas alquiladas y los días a partir del 2011. Por lo que, en general, cuantos más días pasan más aumenta el número de bicicletas alquiladas. Aunque, no se observa una fuerte correlación positiva ya que en algunos momentos decrece ligeramente el número de bicicletas alquiladas.  Mirando la gráfica, vemos que al principio aumenta, se observa un pequeño parón, vuelve a aumentar y por último un ligero decrecimiento.
+
+Para la temperatura, se observa también una correlación positiva para la variable temperatura y la predicción de las bicicletas alquiladas. En general, para mayores temperaturas el número de bicicletas alquiladas es mayor. Excepto para las temperaturas superiores a 23 º, esto parece lógico ya que cuando hace demasiado calor las personas no tienen tantas ganas de ir en bicicleta.
+
+En el caso de la velocidad del vient, si es menor de 25 no se puede afirmar nada ya que no hay suficientes muestras. En el resto vemos una correlación positiva entre las dos variables.
+
+Por último, respecto a la humedad no podemos afirmar nada para valores inferiores a 50 debido a las pocas muestras. En el resto, observamos una relación negativa prácticamente lineal, ya que cuando aumenta una de las variables, la otra disminuye.
+
 ## EXERCISE:
 
 Generate a 2D Partial Dependency Plot with humidity and temperature to predict the number of bikes rented depending of those parameters.
