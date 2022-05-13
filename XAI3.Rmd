@@ -54,31 +54,6 @@ for(c in names(results)[1:4])
 }
 ```
 
-```{r}
-
-p1 <- ggplot(data = days_since, aes(x=days_since_2011, y=results$days_since_2011)) + geom_line() +
-  ylim(0, 6000) + geom_rug(alpha=0.1, sides="b")+ labs(x="Days since 2011", y="Prediction")
-p2 <- ggplot(data = days_since, aes(x=temp, y=results$temp)) + geom_line() + ylim(0, 6000) +
-  geom_rug(alpha=0.1, sides="b") + labs(x="Temperature", y=NULL)
-p3 <- ggplot(days_since, aes(x=hum , y = results$hum)) + geom_line() + geom_rug(alpha=0.1, sides="b") + 
-  ylim(0, 6000) + labs(x="Humidity", y=NULL)
-p4 <- ggplot(data = days_since, aes(x=windspeed, y=results$windspeed)) + geom_line() + ylim(0, 6000) +
-  geom_rug(alpha=0.1, sides="b") + labs(x="Wind speed", y=NULL)
-
-p <- subplot(p1,p2,p3,p4, shareY = T, titleY=T, titleX=T)
-p
-```
-
-Para el caso de Días desde 2011, se observa cierta correlación positiva entre la predicción de las bicicletas alquiladas y los días a partir del 2011. Por lo que, en general, cuantos más días pasan más aumenta el número de bicicletas alquiladas. Aunque, no se observa una fuerte correlación positiva ya que en algunos momentos decrece ligeramente el número de bicicletas alquiladas. 
-Mirando la gráfica, vemos que al principio aumenta, se observa un pequeño parón, vuelve a aumentar y por último un ligero decrecimiento.
-
-Para la temperatura, se observa también una correlación positiva para la variable temperatura y la predicción de las bicicletas alquiladas. En general, para mayores temperaturas el número de bicicletas alquiladas es mayor. Excepto para las temperaturas superiores a 23 º, esto parece lógico ya que cuando hace demasiado calor las personas no tienen tantas ganas de ir en bicicleta.
-
-Si la humedad es menor de 50, el alquiler de bicicletas no varía, por lo que no influye. Sin embargo, a partir 50 observamos que existe una relación negativa entre estas dos variables, según aumenta la humedad disminuye el número de bicicletas alquiladas.Además, cuando la humedad es menor de 25, apenas hay muestras, por lo que no podemos sacar ninguna conclusión en ese rango.
-
-Por último, respecto a la velocidad del viento, cuando es superior a 25, el número de muestras es reducido, por lo que, hasta ese momento, se puede apreciar una correlación positiva entre la velocidad del viento y el alquiler de bicicletas.
-
-
 
 ## EXERCISE:
 
@@ -146,6 +121,23 @@ for(c in names(results)[1:4]){
     }
   }
 ```
+
+```{r}
+p1 <- ggplot(data = sampled, aes(x=bedrooms, y=results$bedrooms)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b")+ labs(x="Bedrooms", y="Prediction") 
+p2 <- ggplot(data = sampled, aes(x=bathrooms, y=results$bathrooms)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Bathrooms", y=NULL)+ xlim(0,5)
+p3 <- ggplot(sampled, aes(x=sqft_living , y = results$sqft_living)) + geom_line() + geom_rug(alpha=0.1, sides="b") + labs(x="Sqft_living", y=NULL)
+p4 <- ggplot(data = sampled, aes(x=floors, y=results$floors)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Floors", y=NULL) 
+
+subplot(p1,p2,p3,p4, titleY=T, titleX=T)
+```
+
+Dormitorios: Podemos ver como el precio aumenta cuando se pasa de 1 a 2 dormitorios, lo que es lógico que sea más caro por contar con más dormitorios. Pero por otro lado vemos como el precio disminuye hasta los 4 dormitorios y de nuevo vuelve a aumentar lo que no parece tener un sentido tan claro.
+Baños: Vemos como el precio aumenta a medida que aumenta el número de baños. Parece que de 4 a 5 baños el precio disminuye, pero la diferencia es mínima. Esto tiene sentido ya que una casa con mas baños tiene más valor por regla general, porque suele ser una vivienda de un nivel mayor.
+Metros de la vivienda: A media que aumentan los metros en una vivienda sube su precio considerablemente, lo que es lógico ya que una casa más grande tiene un precio mayor.
+Piso: A medida que aumenta el número de piso aumenta el valor de la vivienda. Esto es normal porque los pisos con mayor altura suelen tener precios mayores ya que a la gente le suele gustar más, por vistas, ausencia de ruidos de la calle, seguridad, etc.
 
 
 
