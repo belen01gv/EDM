@@ -54,10 +54,6 @@ for(c in names(results)[1:4])
 }
 ```
 
-
-
-
-
 ## EXERCISE:
 
 Generate a 2D Partial Dependency Plot with humidity and temperature to predict the number of bikes rented depending of those parameters.
@@ -128,6 +124,23 @@ for(c in names(results)[1:4]){
     }
   }
 ```
+
+```{r}
+p1 <- ggplot(data = sampled, aes(x=bedrooms, y=results$bedrooms)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b")+ labs(x="Bedrooms", y="Prediction") 
+p2 <- ggplot(data = sampled, aes(x=bathrooms, y=results$bathrooms)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Bathrooms", y=NULL)+ xlim(0,5)
+p3 <- ggplot(sampled, aes(x=sqft_living , y = results$sqft_living)) + geom_line() + geom_rug(alpha=0.1, sides="b") + labs(x="Sqft_living", y=NULL)
+p4 <- ggplot(data = sampled, aes(x=floors, y=results$floors)) + geom_line() +
+  geom_rug(alpha=0.1, sides="b") + labs(x="Floors", y=NULL) 
+
+subplot(p1,p2,p3,p4, titleY=T, titleX=T)
+```
+
+Dormitorios: Podemos ver como el precio aumenta cuando se pasa de 1 a 2 dormitorios, lo que es lógico que sea más caro por contar con más dormitorios. Pero por otro lado vemos como el precio disminuye hasta los 4 dormitorios y de nuevo vuelve a aumentar lo que no parece tener un sentido tan claro.
+Baños: Vemos como el precio aumenta a medida que aumenta el número de baños. Parece que de 4 a 5 baños el precio disminuye, pero la diferencia es mínima. Esto tiene sentido ya que una casa con mas baños tiene más valor por regla general, porque suele ser una vivienda de un nivel mayor.
+Metros de la vivienda: A media que aumentan los metros en una vivienda sube su precio considerablemente, lo que es lógico ya que una casa más grande tiene un precio mayor.
+Piso: A medida que aumenta el número de piso aumenta el valor de la vivienda. Esto es normal porque los pisos con mayor altura suelen tener precios mayores ya que a la gente le suele gustar más, por vistas, ausencia de ruidos de la calle, seguridad, etc.
 
 
 
